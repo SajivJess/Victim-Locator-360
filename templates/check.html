@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Check</title>
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script>
+      const socket = io();
+
+      function sendCheck(value) {
+        socket.emit("check", value);
+      }
+    </script>
+  </head>
+  <body>
+    <button
+      style="background-color: black; color: white; width: 200px; height: 100px"
+      onclick="sendCheck(1)"
+    >
+      Check 1
+    </button>
+    <button
+      style="background-color: black; color: white; width: 200px; height: 100px"
+      onclick="sendCheck(0)"
+    >
+      Check 0
+    </button>
+  </body>
+</html>
