@@ -3,6 +3,7 @@
 Victim Locator 360 (VL360) is an AI-driven disaster response system designed to enhance body detection in Collapsed Structure Search and Rescue (CSSR) operations. Developed for 🏢 National Disaster Response Force (NDRF) teams, VL360 integrates 🤖 autonomous drones, 🚜 rovers, and 🧠 machine learning (ML) models to accurately locate victims in disaster-stricken areas.
 
 🔑 Key Features:
+
 ✅ AI-Powered Victim Detection – Uses 🧠 deep learning models to analyze 📡 GPR radargrams and real-time sensor data.
 ✅ Multi-Unit Search System – 🚁 Drones for aerial scanning, 🚜 rovers for ground search, and 📡 GPR for sub-surface detection.
 ✅ Real-Time Communication & Data Sharing – Uses 📶 WiFi, 📡 LoRa, and 🔐 secure encryption for seamless NDRF coordination.
