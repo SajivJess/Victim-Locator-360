@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500&display=swap" rel="stylesheet">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <style>
+        body {
+            background: radial-gradient(circle, #000000, #0d0d0d, #001f3f);
+            font-family: 'Rajdhani', sans-serif;
+            color: #e0e0e0;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Particles.js container */
+        #particles-js {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(90deg, rgba(0, 255, 255, 0.8), rgba(0, 128, 192, 0.8));
+            text-align: center;
+            padding: 20px 0;
+            width: 100%;
+            z-index: 10;
+            box-shadow: 0 4px 10px rgba(0, 255, 255, 0.4);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-family: 'Orbitron', sans-serif;
+            color: #00ffff;
+            text-shadow: 0 0 15px #00e6e6, 0 0 30px #00cccc;
+        }
+
+        footer {
+            background: linear-gradient(90deg, rgba(0, 255, 255, 0.8), rgba(0, 128, 192, 0.8));
+            text-align: center;
+            padding: 15px 0;
+            color: rgba(255, 255, 255, 0.9);
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            box-shadow: 0px -4px 10px rgba(0, 255, 255, 0.4);
+            z-index: 10;
+        }
+
+        footer a {
+            color: #00ffff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Admin Login Container */
+        .login-container {
+            background: rgba(15, 15, 15, 0.9);
+            border: 2px solid #00ffff;
+            border-radius: 15px;
+            padding: 30px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5), 0 0 40px rgba(0, 128, 192, 0.5);
+            color: #ffffff;
+            margin-top: 120px;
+            text-align: center;
+        }
+
+        .login-container h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: #00ffff;
+            text-shadow: 0 0 10px #00e6e6, 0 0 20px #00cccc;
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            font-family: 'Rajdhani', sans-serif;
+            background: rgba(255, 255, 255, 0.1);
+            color: #e0e0e0;
+            border: 1px solid #00ffff;
+        }
+
+        .form-control:focus {
+            border-color: #00e6e6;
+            box-shadow: 0 0 10px #00e6e6;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #0b3d91, #00ffff);
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 12px;
+            width: 100%;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.6), 0 0 25px rgba(0, 128, 192, 0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.8), 0 0 35px rgba(0, 128, 192, 0.7);
+        }
+
+        .btn-primary:active {
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Particles.js Container -->
+    <div id="particles-js"></div>
+
+    <!-- Header Section -->
+    <header>
+        <h1>VICTIM LOCATOR 360</h1>
+    </header>
+
+    <!-- Admin Login Container -->
+    <div class="login-container">
+        <h2>Admin Login</h2>
+        <form method="POST" action="/admin_login">
+            <div class="mb-3">
+                <label for="username" class="form-label">Username:</label>
+                <input type="text" id="username" name="username" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password:</label>
+                <input type="password" id="password" name="password" class="form-control" required>
+            </div>
+            <button type="submit" class="btn-primary">Login</button>
+        </form>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div class="mt-3 text-yellow-300" role="alert">
+              {% for message in messages %}
+                <div>{{ message }}</div>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endwith %}
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+       &copy; 2024 Victim Locator 360 - by TEAM CODE-O-PHILES | <a href="{{ url_for('privacy_policy') }}" class="text-cyan-400 hover:underline">Privacy Policy</a>
+    </footer>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 600,
+            easing: 'ease-in-out',
+            once: true,
+        });
+    </script>
+    <!-- Particles.js Configuration -->
+    <script>
+        particlesJS('particles-js', {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#00ffff"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    }
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false
+                },
+                "size": {
+                    "value": 3,
+                    "random": true
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#00ffff",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 2,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "repulse": {
+                        "distance": 100,
+                        "duration": 0.4
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
